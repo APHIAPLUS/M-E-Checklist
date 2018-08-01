@@ -70,7 +70,7 @@ current_time=yr+"-"+mnth+"-"+dater+"-"+hr+":"+mn+":"+sc;
                 String pw = new BigInteger(1, m.digest()).toString(16);
          
                 dbConn conn = new dbConn();  
-                String select1 = "select * from users";
+                String select1 = "select * from internal_system.user";
           
                    conn.rs = conn.st.executeQuery(select1);
                    
@@ -86,8 +86,8 @@ current_time=yr+"-"+mnth+"-"+dater+"-"+hr+":"+mn+":"+sc;
   if (conn.rs.getString("username").equals(uname) && conn.rs.getString("password").equals(pw)) {
           
                     error_login = "";
-                    if (conn.rs.getString("level").equals("1") || conn.rs.getString("level").equals("3")) {
-                   System.out.println("Admin or ME OFFICER");
+                    if (conn.rs.getString("level").equals("3")) {
+                   System.out.println("Admin");
                         String ip=InetAddress.getLocalHost().getHostAddress();   
 //              String inserter="insert into audit set host_comp='"+computername+" "+ip+"' , action='Logged in ',time='"+current_time+"',actor_id='"+conn.rs.getString("userid")+"'";                         
 //                conn.st3.executeUpdate(inserter);                
@@ -98,7 +98,7 @@ current_time=yr+"-"+mnth+"-"+dater+"-"+hr+":"+mn+":"+sc;
                        break;  
                     }
              
-                       else if(conn.rs.getString("level").equals("2")){ 
+                       else if(conn.rs.getString("level").equals("1")){ 
                            //                        AUDIT TRAILS IS SAVED HERE
                        trails.addTrails(conn.rs.getString("userid"), "Logged in as a user");
                 nextPage = "user_main.jsp";

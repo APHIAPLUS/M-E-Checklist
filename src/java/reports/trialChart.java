@@ -19,7 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 /**
  *
@@ -33,7 +32,7 @@ String data,indicator;
 int year,month,prevYear;
 String reportDuration,duration,period,url,semi_annual,quarter;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, SQLException, JSONException {
+            throws ServletException, IOException, SQLException{
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
@@ -199,9 +198,7 @@ recounted_Data=reported_711A=reported_731=reported_DHIS=0;
         processRequest(request, response);
     } catch (SQLException ex) {
         Logger.getLogger(trialChart.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (JSONException ex) {
-        Logger.getLogger(trialChart.class.getName()).log(Level.SEVERE, null, ex);
-    }
+    } 
     }
 
     /**
@@ -218,8 +215,6 @@ recounted_Data=reported_711A=reported_731=reported_DHIS=0;
     try {
         processRequest(request, response);
     } catch (SQLException ex) {
-        Logger.getLogger(facilityBarChart.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (JSONException ex) {
         Logger.getLogger(facilityBarChart.class.getName()).log(Level.SEVERE, null, ex);
     }
     }

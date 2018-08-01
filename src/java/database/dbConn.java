@@ -125,10 +125,15 @@ public  Connection conn = null;
 
         try {
 
+            String dbconnpath = "";
 
+           if(OSValidator.isWindows()){
 
-            String dbconnpath = drive + ":/APHIAPLUS/CHECKLIST/DO_NOT_DELETE/_/_/./dbconnection.txt";
-
+            dbconnpath = drive + ":/HSDSA/CHECKLIST/DO_NOT_DELETE/_/_/./dbconnection.txt";
+           }
+           else if(OSValidator.isUnix()){
+            dbconnpath ="/HSDSA/CHECKLIST/DO_NOT_DELETE/_/_/./dbconnection.txt";
+           }
             //File file = new File("");
             // InputStream inStream = getClass().getResourceAsStream("Web-INF/classes/dbconnection.txt");  
             FileInputStream fstream = new FileInputStream(dbconnpath);

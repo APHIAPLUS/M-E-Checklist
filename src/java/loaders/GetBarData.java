@@ -10,9 +10,7 @@ import database.dbConn;
 import java.sql.SQLException;
 import java.util.ArrayList; 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-import loaders.BarChart;
 /**
  *
  * @author Geofrey Nyabuto
@@ -25,7 +23,7 @@ String allRecounted,all711,all731,allDHIS,allIndicators,alldata;
 int year,month,prevYear;
 String reportDuration,duration,period,url,semi_annual,quarter,allDATAVal;
  dbConn conn = new dbConn();
-    public String  GenerateJSonChartData(String facilityID,String duration, String jsonp) throws  JSONException, SQLException
+    public String  GenerateJSonChartData(String facilityID,String duration, String jsonp) throws  SQLException
     {
 
     String chartType=jsonp;
